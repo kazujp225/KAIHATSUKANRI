@@ -1,0 +1,8 @@
+{
+  "name": "kaihatsukanri",
+  "version": "1.0.0",
+  "description": "開発管理システム",
+  "scripts": {
+    "dev": "npx serve -l 3000"
+  }
+}
