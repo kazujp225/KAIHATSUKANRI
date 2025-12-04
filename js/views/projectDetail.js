@@ -51,22 +51,22 @@ export function renderProjectDetail(projectId) {
 
     const html = `
         <!-- Project Header -->
-        <div class="card" style="margin-bottom: var(--space-lg);">
-            <div style="display: flex; justify-content: space-between;">
-                <div style="display: flex; align-items: start; gap: var(--space-2xl); flex: 1;">
+        <div class="card mb-lg glass-effect">
+            <div class="flex justify-between">
+                <div class="flex items-start gap-2xl flex-1">
                     <!-- Left: Basic Info -->
-                    <div style="flex: 1;">
-                        <h2 style="margin-bottom: var(--space-sm);">${project.name}</h2>
-                        <div style="display: flex; flex-direction: column; gap: var(--space-xs); color: var(--color-text-secondary); font-size: 0.875rem;">
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold gradient-text mb-sm">${project.name}</h2>
+                        <div class="flex flex-col gap-xs text-secondary text-sm">
                             <div>
-                                <strong>顧客:</strong> ${client?.name || '不明'}
+                                <strong class="font-semibold">顧客:</strong> ${client?.name || '不明'}
                                 ${client?.contactPerson ? `(${client.contactPerson})` : ''}
                             </div>
                             <div>
-                                <strong>連絡先:</strong> ${client?.email || '-'} / ${client?.phone || '-'}
+                                <strong class="font-semibold">連絡先:</strong> ${client?.email || '-'} / ${client?.phone || '-'}
                             </div>
                             ${project.links && project.links.length > 0 ? `
-                                <div style="margin-top: var(--space-sm); display: flex; flex-wrap: wrap; gap: var(--space-xs);">
+                                <div class="mt-sm flex flex-wrap gap-xs">
                                     ${renderQuickLinks(project.links)}
                                 </div>
                             ` : ''}
@@ -74,7 +74,7 @@ export function renderProjectDetail(projectId) {
                     </div>
                     
                     <!-- Center: Status & Progress -->
-                    <div style="flex: 1;">
+                    <div class="flex-1">
                         <div class="form-group">
                             <label class="form-label">ステータス</label>
                             <select class="form-select" id="project-status">
@@ -87,8 +87,8 @@ export function renderProjectDetail(projectId) {
                             </select>
                         </div>
                         
-                        <div style="margin-top: var(--space-md);">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-xs);">
+                        <div class="mt-md">
+                            <div class="flex justify-between mb-xs">
                                 <span class="text-sm text-secondary">進捗</span>
                                 <span class="text-sm font-semibold">${progress}%</span>
                             </div>
@@ -97,7 +97,7 @@ export function renderProjectDetail(projectId) {
                             </div>
                         </div>
                         
-                        <div style="margin-top: var(--space-md); display: flex; gap: var(--space-md);">
+                        <div class="mt-md flex gap-md">
                             <div>
                                 <div class="text-xs text-tertiary">一次納期</div>
                                 <div class="text-sm font-medium">${formatDate(project.primaryDueDate)}</div>
@@ -111,8 +111,8 @@ export function renderProjectDetail(projectId) {
                     
                     <!-- Right: Team -->
                     <div>
-                        <div class="text-sm text-secondary" style="margin-bottom: var(--space-sm);">担当者</div>
-                        <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm);">
+                        <div class="text-sm text-secondary mb-sm">担当者</div>
+                        <div class="flex items-center gap-sm mb-sm">
                             <img src="${mainAssignee?.avatar}" alt="${mainAssignee?.name}" class="avatar avatar-lg">
                             <div>
                                 <div class="text-sm font-medium">${mainAssignee?.name}</div>
@@ -124,17 +124,21 @@ export function renderProjectDetail(projectId) {
                 </div>
                 
                 <!-- Project Actions Menu -->
-                <div style="margin-left: var(--space-md);">
-                    <button class="btn btn-secondary btn-sm" id="project-menu-btn" style="width: 40px; height: 40px; padding: 0;">
+                <div class="dropdown-container ml-md">
+                    <button class="btn btn-secondary btn-sm icon-btn" id="project-menu-btn">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                             <circle cx="10" cy="4" r="1.5"/>
                             <circle cx="10" cy="10" r="1.5"/>
                             <circle cx="10" cy="16" r="1.5"/>
                         </svg>
                     </button>
-                    <div id="project-menu" class="dropdown-menu" style="display: none; position: absolute; right: var(--space-lg); background: white; border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); min-width: 180px; z-index: 100;">
-                        <button class="dropdown-item" id="edit-project-btn" style="width: 100%; text-align: left; padding: var(--space-sm) var(--space-md); border: none; background: none; cursor: pointer; font-size: 0.875rem;">
-                            📝 案件を編集
+                    <div id="project-menu" class="dropdown-menu">
+                        <button class="dropdown-item" id="edit-project-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                            案件を編集
                         </button>
                     </div>
                 </div>
@@ -173,30 +177,73 @@ function renderAssigneeAvatars(assigneeIds) {
 
 function renderQuickLinks(links) {
     const linkConfig = {
-        'github': { icon: '🐙', label: 'GitHub', color: '#24292e' },
-        'render': { icon: '🚀', label: 'Render', color: '#46e3b7' },
-        'vercel': { icon: '▲', label: 'Vercel', color: '#000000' },
-        'netlify': { icon: '🔷', label: 'Netlify', color: '#00c7b7' },
-        'heroku': { icon: '💜', label: 'Heroku', color: '#430098' },
-        'aws': { icon: '☁️', label: 'AWS', color: '#ff9900' },
-        'azure': { icon: '🌐', label: 'Azure', color: '#0078d4' },
-        'docs': { icon: '📚', label: 'Docs', color: '#2563eb' },
-        'staging': { icon: '🧪', label: 'Staging', color: '#f59e0b' },
-        'production': { icon: '🌟', label: 'Production', color: '#10b981' },
-        'other': { icon: '🔗', label: 'Link', color: '#6b7280' }
+        'github': {
+            icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>',
+            label: 'GitHub',
+            color: '#24292e'
+        },
+        'render': {
+            icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>',
+            label: 'Render',
+            color: '#46e3b7'
+        },
+        'vercel': {
+            icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 22h-24l12-24z"></path></svg>',
+            label: 'Vercel',
+            color: '#000000'
+        },
+        'netlify': {
+            icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>',
+            label: 'Netlify',
+            color: '#00c7b7'
+        },
+        'heroku': {
+            icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>',
+            label: 'Heroku',
+            color: '#430098'
+        },
+        'aws': {
+            icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>',
+            label: 'AWS',
+            color: '#ff9900'
+        },
+        'azure': {
+            icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>',
+            label: 'Azure',
+            color: '#0078d4'
+        },
+        'docs': {
+            icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>',
+            label: 'Docs',
+            color: '#4f46e5'
+        },
+        'staging': {
+            icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>',
+            label: 'Staging',
+            color: '#d97706'
+        },
+        'production': {
+            icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>',
+            label: 'Production',
+            color: '#059669'
+        },
+        'other': {
+            icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>',
+            label: 'Link',
+            color: '#64748b'
+        }
     };
 
     return links.map(link => {
         const config = linkConfig[link.type] || linkConfig['other'];
         return `
             <a href="${link.url}" target="_blank" rel="noopener noreferrer" 
-               style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: white; border: 1.5px solid ${config.color}30; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600; text-decoration: none; color: ${config.color}; transition: all 0.2s;"
-               onmouseover="this.style.background='${config.color}'; this.style.color='white'; this.style.borderColor='${config.color}';"
-               onmouseout="this.style.background='white'; this.style.color='${config.color}'; this.style.borderColor='${config.color}30';"
+               class="quick-link"
+               style="--link-color: ${config.color}"
                title="${link.label}">
-                <span style="font-size: 0.875rem;">${config.icon}</span>
+                <span class="text-sm">${config.icon}</span>
                 <span>${config.label}</span>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="opacity: 0.6;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="opacity-60">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" stroke-width="2" stroke-linecap="round"/>
                     <polyline points="15 3 21 3 21 9" stroke-width="2" stroke-linecap="round"/>
                     <line x1="10" y1="14" x2="21" y2="3" stroke-width="2" stroke-linecap="round"/>
@@ -306,7 +353,13 @@ function renderOverviewTab(projectId) {
             <!-- External Links Section -->
             <div class="card" style="margin-top: var(--space-lg);">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-md);">
-                    <h3 class="card-title" style="margin: 0;">🔗 関連リンク</h3>
+                    <h3 class="card-title" style="margin: 0;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: bottom; margin-right: 6px;">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
+                        関連リンク
+                    </h3>
                     <button class="btn btn-secondary btn-sm" onclick="editProjectLinks('${projectId}')">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M12 5v14M5 12h14" stroke-width="2" stroke-linecap="round"/>
@@ -355,7 +408,14 @@ function renderTasksTab(projectId) {
                                 新規タスクを作成
                             </button>
                             <button class="btn btn-secondary" id="add-from-template-btn">
-                                📋 テンプレから追加
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                                テンプレから追加
                             </button>
                         </div>
                     </div>
@@ -369,7 +429,16 @@ function renderTasksTab(projectId) {
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-lg);">
                 <h3>タスク一覧 (${tasks.length}件)</h3>
                 <div style="display: flex; gap: var(--space-sm);">
-                    <button class="btn btn-secondary btn-sm" id="add-from-template-btn">📋 テンプレから追加</button>
+                    <button class="btn btn-secondary btn-sm" id="add-from-template-btn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        テンプレから追加
+                    </button>
                     <button class="btn btn-primary btn-sm" id="create-task-btn">＋ 新規タスク</button>
                 </div>
             </div>
@@ -713,8 +782,8 @@ function renderHandoverTab(projectId) {
                     <div style="padding-top: var(--space-md); border-top: 1px solid var(--color-border);">
                         <label style="display: flex; align-items: center; gap: var(--space-sm);">
                             <input type="checkbox" ${note.completed ? 'checked' : ''} disabled>
-                            <span class="font-medium ${note.completed ? 'text-success' : ''}">
-                                ${note.completed ? '✓ 引き継ぎ完了' : '引き継ぎ未完了'}
+                            <span class="font-medium ${note.completed ? 'text-success' : ''}" style="display: flex; align-items: center; gap: 6px;">
+                                ${note.completed ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 引き継ぎ完了' : '引き継ぎ未完了'}
                             </span>
                         </label>
                     </div>
@@ -755,14 +824,13 @@ function attachTabHandlers() {
     if (projectMenuBtn && projectMenu) {
         projectMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const isVisible = projectMenu.style.display === 'block';
-            projectMenu.style.display = isVisible ? 'none' : 'block';
+            projectMenu.classList.toggle('active');
         });
 
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!projectMenuBtn.contains(e.target) && !projectMenu.contains(e.target)) {
-                projectMenu.style.display = 'none';
+                projectMenu.classList.remove('active');
             }
         });
 
@@ -773,7 +841,7 @@ function attachTabHandlers() {
                 import('../components/modal.js').then(({ showProjectEditModal }) => {
                     const project = getProjectById(currentProjectId);
                     showProjectEditModal(project, () => {
-                        projectMenu.style.display = 'none';
+                        projectMenu.classList.remove('active');
                         renderProjectDetail(currentProjectId);
                     });
                 });
@@ -1097,31 +1165,31 @@ function renderProjectLinks(links) {
     }
 
     const linkIcons = {
-        'github': '🐙',
-        'render': '🚀',
-        'vercel': '▲',
-        'netlify': '🔷',
-        'heroku': '💜',
-        'aws': '☁️',
-        'azure': '🌐',
-        'docs': '📚',
-        'staging': '🧪',
-        'production': '🌟',
-        'other': '🔗'
+        'github': '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>',
+        'render': '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>',
+        'vercel': '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 19.5h20L12 2z"></path></svg>',
+        'netlify': '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>',
+        'heroku': '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><path d="M8 12l4 3 4-3M12 15V7"></path></svg>',
+        'aws': '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>',
+        'azure': '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>',
+        'docs': '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>',
+        'staging': '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>',
+        'production': '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>',
+        'other': '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>'
     };
 
     return `
         <div style="display: grid; gap: var(--space-sm);">
             ${links.map((link, index) => `
-                <a href="${link.url}" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: var(--color-gray-50); border: 1px solid var(--color-border); border-radius: var(--radius-md); text-decoration: none; transition: all 0.2s; color: inherit;">
-                    <div style="font-size: 1.5rem; flex-shrink: 0;">
+                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="external-link-item" style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: var(--color-gray-50); border: 1px solid var(--color-border); border-radius: var(--radius-md); text-decoration: none; transition: all 0.2s; color: inherit;">
+                    <div class="link-icon" style="flex-shrink: 0; color: var(--color-text-secondary);">
                         ${linkIcons[link.type] || linkIcons['other']}
                     </div>
                     <div style="flex: 1; min-width: 0;">
                         <div style="font-weight: 600; font-size: 0.9375rem; margin-bottom: 2px;">${link.label}</div>
-                        <div style="font-size: 0.75rem; color: var(--color-text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${link.url}</div>
+                        <div class="link-url" style="font-size: 0.75rem; color: var(--color-text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${link.url}</div>
                     </div>
-                    <div style="flex-shrink: 0;">
+                    <div class="link-arrow" style="flex-shrink: 0; color: var(--color-text-tertiary);">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <polyline points="15 3 21 3 21 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1131,16 +1199,18 @@ function renderProjectLinks(links) {
                 </a>
             `).join('')}
         </div>
-        
+
         <style>
-            a:hover {
-                background: var(--color-primary) !important;
-                color: white !important;
+            .external-link-item:hover {
+                background: var(--color-primary-subtle) !important;
                 border-color: var(--color-primary) !important;
                 transform: translateX(4px);
             }
-            a:hover div {
-                color: white !important;
+            .external-link-item:hover .link-icon {
+                color: var(--color-primary) !important;
+            }
+            .external-link-item:hover .link-arrow {
+                color: var(--color-primary) !important;
             }
         </style>
     `;
@@ -1162,17 +1232,17 @@ window.editProjectLinks = function (projectId) {
                                 <div class="form-group" style="flex: 1; margin: 0;">
                                     <label class="form-label">種別</label>
                                     <select class="form-select" name="link-type-${index}">
-                                        <option value="github" ${link.type === 'github' ? 'selected' : ''}>🐙 GitHub</option>
-                                        <option value="render" ${link.type === 'render' ? 'selected' : ''}>🚀 Render</option>
-                                        <option value="vercel" ${link.type === 'vercel' ? 'selected' : ''}>▲ Vercel</option>
-                                        <option value="netlify" ${link.type === 'netlify' ? 'selected' : ''}>🔷 Netlify</option>
-                                        <option value="heroku" ${link.type === 'heroku' ? 'selected' : ''}>💜 Heroku</option>
-                                        <option value="aws" ${link.type === 'aws' ? 'selected' : ''}>☁️ AWS</option>
-                                        <option value="azure" ${link.type === 'azure' ? 'selected' : ''}>🌐 Azure</option>
-                                        <option value="docs" ${link.type === 'docs' ? 'selected' : ''}>📚 Docs</option>
-                                        <option value="staging" ${link.type === 'staging' ? 'selected' : ''}>🧪 Staging</option>
-                                        <option value="production" ${link.type === 'production' ? 'selected' : ''}>🌟 Production</option>
-                                        <option value="other" ${link.type === 'other' ? 'selected' : ''}>🔗 その他</option>
+                                        <option value="github" ${link.type === 'github' ? 'selected' : ''}>GitHub</option>
+                                        <option value="render" ${link.type === 'render' ? 'selected' : ''}>Render</option>
+                                        <option value="vercel" ${link.type === 'vercel' ? 'selected' : ''}>Vercel</option>
+                                        <option value="netlify" ${link.type === 'netlify' ? 'selected' : ''}>Netlify</option>
+                                        <option value="heroku" ${link.type === 'heroku' ? 'selected' : ''}>Heroku</option>
+                                        <option value="aws" ${link.type === 'aws' ? 'selected' : ''}>AWS</option>
+                                        <option value="azure" ${link.type === 'azure' ? 'selected' : ''}>Azure</option>
+                                        <option value="docs" ${link.type === 'docs' ? 'selected' : ''}>Docs</option>
+                                        <option value="staging" ${link.type === 'staging' ? 'selected' : ''}>Staging</option>
+                                        <option value="production" ${link.type === 'production' ? 'selected' : ''}>Production</option>
+                                        <option value="other" ${link.type === 'other' ? 'selected' : ''}>その他</option>
                                     </select>
                                 </div>
                                 <div class="form-group" style="flex: 2; margin: 0;">
@@ -1206,7 +1276,7 @@ window.editProjectLinks = function (projectId) {
                 <button class="btn btn-primary" onclick="saveProjectLinks('${projectId}')">保存</button>
             `;
 
-            showModal('🔗 関連リンクを編集', content, footer);
+            showModal('関連リンクを編集', content, footer);
 
             // Add new link row function
             window.addNewLinkRow = () => {
@@ -1219,17 +1289,17 @@ window.editProjectLinks = function (projectId) {
                     <div class="form-group" style="flex: 1; margin: 0;">
                         <label class="form-label">種別</label>
                         <select class="form-select" name="link-type-${newIndex}">
-                            <option value="github">🐙 GitHub</option>
-                            <option value="render">🚀 Render</option>
-                            <option value="vercel">▲ Vercel</option>
-                            <option value="netlify">🔷 Netlify</option>
-                            <option value="heroku">💜 Heroku</option>
-                            <option value="aws">☁️ AWS</option>
-                            <option value="azure">🌐 Azure</option>
-                            <option value="docs">📚 Docs</option>
-                            <option value="staging">🧪 Staging</option>
-                            <option value="production">🌟 Production</option>
-                            <option value="other">🔗 その他</option>
+                            <option value="github">GitHub</option>
+                            <option value="render">Render</option>
+                            <option value="vercel">Vercel</option>
+                            <option value="netlify">Netlify</option>
+                            <option value="heroku">Heroku</option>
+                            <option value="aws">AWS</option>
+                            <option value="azure">Azure</option>
+                            <option value="docs">Docs</option>
+                            <option value="staging">Staging</option>
+                            <option value="production">Production</option>
+                            <option value="other">その他</option>
                         </select>
                     </div>
                     <div class="form-group" style="flex: 2; margin: 0;">

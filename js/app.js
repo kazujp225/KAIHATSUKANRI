@@ -10,7 +10,6 @@ import renderProjectDetail from './views/projectDetail.js';
 import renderProjects from './views/projects.js';
 import renderMembers from './views/members.js';
 import renderTemplates from './views/templates.js';
-import renderSettings from './views/settings.js';
 
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
@@ -83,9 +82,6 @@ function navigate(route, projectId = null, pushState = true) {
             break;
         case 'templates':
             renderTemplates();
-            break;
-        case 'settings':
-            renderSettings();
             break;
         default:
             renderDashboard();

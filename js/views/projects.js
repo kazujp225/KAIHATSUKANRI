@@ -29,7 +29,12 @@ export default function renderProjects() {
             <!-- Page Header -->
             <div class="page-header">
                 <div class="page-header-left">
-                    <h1 class="page-title">📂 案件一覧</h1>
+                    <h1 class="page-title">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: bottom; margin-right: 8px;">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        案件一覧
+                    </h1>
                     <p class="page-subtitle">${projects.length}件の案件</p>
                 </div>
                 <div class="page-header-right">
@@ -108,121 +113,122 @@ function renderCompactProjectRow(project) {
     const isOverdue = dueDate < today && project.status !== '完了' && project.status !== '運用中';
     const daysUntilDue = Math.ceil((dueDate - today) / (1000 * 60 * 60 * 24));
 
-    // Status configuration
+    // Status configuration with SVG icons and new muted colors
     const statusConfig = {
-        '見積中': { color: '#6b7280', icon: '📊', gradient: 'linear-gradient(135deg, #6b728015 0%, #6b728008 100%)' },
-        '開発中': { color: '#2563eb', icon: '💻', gradient: 'linear-gradient(135deg, #2563eb15 0%, #2563eb08 100%)' },
-        '検収中': { color: '#f59e0b', icon: '🔍', gradient: 'linear-gradient(135deg, #f59e0b15 0%, #f59e0b08 100%)' },
-        '運用中': { color: '#8b5cf6', icon: '🚀', gradient: 'linear-gradient(135deg, #8b5cf615 0%, #8b5cf608 100%)' },
-        '完了': { color: '#10b981', icon: '✅', gradient: 'linear-gradient(135deg, #10b98115 0%, #10b98108 100%)' },
-        '保留': { color: '#eab308', icon: '⏸️', gradient: 'linear-gradient(135deg, #eab30815 0%, #eab30808 100%)' },
-        '中止': { color: '#ef4444', icon: '❌', gradient: 'linear-gradient(135deg, #ef444415 0%, #ef444408 100%)' }
+        '見積中': {
+            color: '#d97706', // Amber 600
+            icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>',
+            gradient: 'linear-gradient(135deg, #fffbeb 0%, #fff7ed 100%)'
+        },
+        '開発中': {
+            color: '#4f46e5', // Indigo 600
+            icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>',
+            gradient: 'linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%)'
+        },
+        '検収中': {
+            color: '#0891b2', // Cyan 600
+            icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+            gradient: 'linear-gradient(135deg, #ecfeff 0%, #cffafe 100%)'
+        },
+        '運用中': {
+            color: '#7c3aed', // Violet 600
+            icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.1 4-1 4-1s.38 2.38-1 4z"></path><path d="M15 13v5s3.03-.55 4-2c1.1-1.62 1-4 1-4s-2.38-.38-4 1z"></path></svg>',
+            gradient: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)'
+        },
+        '完了': {
+            color: '#059669', // Emerald 600
+            icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>',
+            gradient: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)'
+        },
+        '保留': {
+            color: '#64748b', // Slate 500
+            icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>',
+            gradient: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)'
+        },
+        '中止': {
+            color: '#e11d48', // Rose 600
+            icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>',
+            gradient: 'linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%)'
+        }
     };
 
     const config = statusConfig[project.status] || statusConfig['見積中'];
 
-    // Progress bar color with gradients
-    let progressColor = '#ef4444';
-    let progressGradient = 'linear-gradient(90deg, #ef4444 0%, #dc2626 100%)';
+    // Progress bar color with gradients (Muted)
+    let progressColor = '#e11d48'; // Rose 600
+    let progressGradient = 'linear-gradient(90deg, #e11d48 0%, #be123c 100%)';
     if (progress >= 70) {
-        progressColor = '#10b981';
-        progressGradient = 'linear-gradient(90deg, #10b981 0%, #059669 100%)';
+        progressColor = '#059669'; // Emerald 600
+        progressGradient = 'linear-gradient(90deg, #059669 0%, #047857 100%)';
     } else if (progress >= 40) {
-        progressColor = '#f59e0b';
-        progressGradient = 'linear-gradient(90deg, #f59e0b 0%, #d97706 100%)';
+        progressColor = '#d97706'; // Amber 600
+        progressGradient = 'linear-gradient(90deg, #d97706 0%, #b45309 100%)';
     }
 
     return `
-        <div class="project-row-compact animate-fade-in" onclick="window.navigate('project-detail', '${project.id}')" style="display: flex; align-items: center; gap: var(--space-lg); padding: var(--space-lg); background: white; border: 2px solid var(--color-border); border-left: 6px solid ${config.color}; border-radius: var(--radius-lg); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;">
-            <!-- Gradient Background Overlay -->
-            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: ${config.gradient}; opacity: 0.5; transition: opacity 0.3s; pointer-events: none;"></div>
-            
-            <!-- Content Container -->
-            <div style="position: relative; z-index: 1; display: flex; align-items: center; gap: var(--space-lg); width: 100%;">
-                <!-- Status Icon with Glow -->
-                <div style="position: relative; flex-shrink: 0;">
-                    <div style="position: absolute; inset: -4px; background: ${config.color}30; border-radius: var(--radius-lg); filter: blur(10px); opacity: 0.6;"></div>
-                    <div style="position: relative; font-size: 1.75rem; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: ${config.gradient}; border: 2px solid ${config.color}40; border-radius: var(--radius-lg);">
-                        ${config.icon}
-                    </div>
+        <div class="project-row-compact" onclick="window.navigate('project-detail', '${project.id}')" style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: white; border: 1px solid var(--color-border); border-radius: var(--radius-md); transition: all 0.2s; cursor: pointer;">
+                <!-- Status Icon -->
+                <div style="width: 40px; height: 40px; background: var(--color-gray-100); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--color-text-secondary); flex-shrink: 0;">
+                    ${config.icon}
                 </div>
 
                 <!-- Main Info -->
                 <div style="flex: 1; min-width: 0;">
-                    <div style="display: flex; align-items: baseline; gap: var(--space-sm); margin-bottom: 6px;">
-                        <h4 style="font-size: 1.0625rem; font-weight: 700; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--color-text);">
-                            ${project.name}
-                        </h4>
-                        <span style="font-size: 0.8125rem; color: var(--color-text-tertiary); white-space: nowrap;">
-                            ${client?.name || ''}
-                        </span>
+                    <div style="font-weight: 600; font-size: 0.9375rem; color: var(--color-text); margin-bottom: 2px;">
+                        ${project.name}
                     </div>
-                    
-                    <!-- Enhanced Progress Bar -->
-                    <div style="display: flex; align-items: center; gap: var(--space-sm);">
-                        <div style="position: relative; flex: 1; height: 8px; background: var(--color-gray-200); border-radius: var(--radius-full); max-width: 240px; overflow: hidden;">
-                            <div style="position: absolute; height: 100%; width: ${progress}%; background: ${progressGradient}; border-radius: var(--radius-full); transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 4px ${progressColor}40;"></div>
-                        </div>
-                        <span style="font-size: 0.8125rem; font-weight: 700; color: ${progressColor}; width: 42px; text-align: right;">
-                            ${progress}%
-                        </span>
+                    <div style="font-size: 0.8125rem; color: var(--color-text-tertiary);">
+                        ${client?.name || ''}
                     </div>
                 </div>
 
-                <!-- Assignee with Enhanced Avatar -->
-                <div style="display: flex; align-items: center; gap: var(--space-sm); min-width: 120px; padding: var(--space-sm) var(--space-md); background: white; border: 2px solid var(--color-border); border-radius: var(--radius-md); box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <div style="position: relative;">
-                        <div style="position: absolute; inset: -2px; background: ${config.gradient}; border-radius: var(--radius-full); filter: blur(4px); opacity: 0.5;"></div>
-                        <img src="${mainAssignee?.avatar}" alt="${mainAssignee?.name}" style="position: relative; width: 32px; height: 32px; border-radius: var(--radius-full); border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.12);">
+                <!-- Progress -->
+                <div style="display: flex; align-items: center; gap: var(--space-sm); min-width: 160px;">
+                    <div style="flex: 1; height: 6px; background: var(--color-gray-200); border-radius: var(--radius-full); overflow: hidden;">
+                        <div style="height: 100%; width: ${progress}%; background: var(--color-primary); border-radius: var(--radius-full);"></div>
                     </div>
-                    <span style="font-size: 0.875rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        ${mainAssignee?.name}
+                    <span style="font-size: 0.8125rem; font-weight: 600; color: var(--color-text); width: 36px; text-align: right;">
+                        ${progress}%
                     </span>
                 </div>
 
-                <!-- Due Date Card -->
-                <div style="min-width: 110px; text-align: center; padding: var(--space-sm) var(--space-md); background: ${isOverdue ? '#fef2f2' : 'white'}; border: 2px solid ${isOverdue ? '#ef444430' : 'var(--color-border)'}; border-radius: var(--radius-md); box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <div style="font-size: 0.875rem; font-weight: 700; color: ${isOverdue ? '#ef4444' : 'var(--color-text)'};">
-                        ${formatDate(project.dueDate)}
-                    </div>
-                    ${isOverdue ? `
-                        <div style="font-size: 0.625rem; color: #ef4444; font-weight: 700; text-transform: uppercase; margin-top: 2px;">期限超過</div>
-                    ` : daysUntilDue <= 7 && daysUntilDue > 0 ? `
-                        <div style="font-size: 0.625rem; color: #f59e0b; font-weight: 700; text-transform: uppercase; margin-top: 2px;">残${daysUntilDue}日</div>
-                    ` : ''}
+                <!-- Assignee -->
+                <div style="display: flex; align-items: center; gap: var(--space-sm); min-width: 100px;">
+                    <img src="${mainAssignee?.avatar}" alt="${mainAssignee?.name}" style="width: 28px; height: 28px; border-radius: var(--radius-full);">
+                    <span style="font-size: 0.8125rem; color: var(--color-text-secondary);">
+                        ${mainAssignee?.name || ''}
+                    </span>
                 </div>
 
-                <!-- Issues Badge -->
-                <div style="min-width: 70px; text-align: center;">
+                <!-- Due Date -->
+                <div style="min-width: 90px; text-align: center;">
+                    <div style="font-size: 0.8125rem; ${isOverdue ? 'color: var(--color-danger); font-weight: 600;' : 'color: var(--color-text-secondary);'}">
+                        ${formatDate(project.dueDate)}
+                    </div>
+                </div>
+
+                <!-- Issues -->
+                <div style="min-width: 50px; text-align: center;">
                     ${openIssues > 0 ? `
-                        <div style="position: relative; display: inline-block;">
-                            <div style="position: absolute; inset: -3px; background: #ef4444; border-radius: var(--radius-full); filter: blur(8px); opacity: 0.3;"></div>
-                            <span style="position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 36px; height: 28px; padding: 0 10px; background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); color: #ef4444; border: 2px solid #ef444440; border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 800; box-shadow: 0 2px 6px rgba(239, 68, 68, 0.2);">
-                                ${openIssues}
-                            </span>
-                        </div>
+                        <span style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; background: var(--color-danger-subtle); color: var(--color-danger); border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 600;">
+                            ${openIssues}
+                        </span>
                     ` : `
                         <span style="font-size: 0.8125rem; color: var(--color-text-tertiary);">-</span>
                     `}
                 </div>
 
-                <!-- Price Card -->
-                <div style="min-width: 120px; text-align: right; padding: var(--space-sm) var(--space-md); background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #10b98130; border-radius: var(--radius-md); box-shadow: 0 2px 4px rgba(16, 185, 129, 0.1);">
-                    <div style="font-size: 1rem; font-weight: 800; color: #059669;">
+                <!-- Price -->
+                <div style="min-width: 100px; text-align: right;">
+                    <span style="font-size: 0.875rem; font-weight: 600; color: var(--color-text);">
                         ${formatCurrency(project.price)}
-                    </div>
+                    </span>
                 </div>
 
-                <!-- Status Badge with Glow -->
-                <div style="min-width: 90px;">
-                    <div style="position: relative; display: inline-block;">
-                        <div style="position: absolute; inset: -3px; background: ${config.color}; border-radius: var(--radius-full); filter: blur(8px); opacity: 0.4;"></div>
-                        <span style="position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 6px 14px; background: ${config.gradient}; color: ${config.color}; border: 2px solid ${config.color}50; border-radius: var(--radius-full); font-size: 0.8125rem; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 6px ${config.color}25;">
-                            ${project.status}
-                        </span>
-                    </div>
-                </div>
-            </div>
+                <!-- Status Badge -->
+                <span style="display: inline-flex; padding: 4px 10px; background: var(--color-gray-100); color: var(--color-text-secondary); border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 500; min-width: 70px; justify-content: center;">
+                    ${project.status}
+                </span>
         </div>
         
         <style>
@@ -235,9 +241,10 @@ function renderCompactProjectRow(project) {
                 animation: fadeIn 0.4s ease-out;
             }
             
+        <style>
             .project-row-compact:hover {
                 border-left-width: 10px;
-                box-shadow: 0 8px 24px ${config.color}30, 0 4px 12px rgba(0, 0, 0, 0.12);
+                box-shadow: var(--shadow-lg);
                 transform: translateX(6px) translateY(-2px);
             }
             
@@ -248,6 +255,35 @@ function renderCompactProjectRow(project) {
             .project-row-compact:active {
                 transform: translateX(3px) translateY(0);
             }
+
+            .due-date-card {
+                min-width: 110px;
+                text-align: center;
+                padding: var(--space-sm) var(--space-md);
+                background: white;
+                border: 2px solid var(--color-border);
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-sm);
+            }
+            .due-date-card.overdue {
+                background: #fef2f2;
+                border-color: rgba(239, 68, 68, 0.3);
+            }
+            .due-date-card .date-text {
+                font-size: 0.875rem;
+                font-weight: 700;
+                color: var(--color-text);
+            }
+            .due-date-card.overdue .date-text { color: var(--color-danger); }
+            
+            .status-text {
+                font-size: 0.625rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-top: 2px;
+            }
+            .status-text.overdue { color: var(--color-danger); }
+            .status-text.warning { color: var(--color-warning); }
         </style>
     `;
 }

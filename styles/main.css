@@ -2,30 +2,60 @@
    CSS Variables & Design System
    ==================================== */
 :root {
-    /* Colors */
-    --color-primary: #2563eb;
-    --color-primary-dark: #1d4ed8;
-    --color-primary-light: #3b82f6;
+    /* Colors - Premium Muted Theme */
+    /* Primary: Deep Indigo/Blue */
+    --color-primary: #4f46e5;
+    /* Indigo 600 */
+    --color-primary-dark: #4338ca;
+    /* Indigo 700 */
+    --color-primary-light: #818cf8;
+    /* Indigo 400 */
+    --color-primary-subtle: #eef2ff;
+    /* Indigo 50 */
 
+    /* Secondary: Slate */
     --color-secondary: #64748b;
+    /* Slate 500 */
     --color-secondary-dark: #475569;
+    /* Slate 600 */
     --color-secondary-light: #94a3b8;
+    /* Slate 400 */
+    --color-secondary-subtle: #f8fafc;
+    /* Slate 50 */
 
-    --color-success: #10b981;
-    --color-success-dark: #059669;
+    /* Success: Emerald (Calmer than Green) */
+    --color-success: #059669;
+    /* Emerald 600 */
+    --color-success-dark: #047857;
+    /* Emerald 700 */
     --color-success-light: #34d399;
+    /* Emerald 400 */
+    --color-success-subtle: #ecfdf5;
+    /* Emerald 50 */
 
-    --color-warning: #f59e0b;
-    --color-warning-dark: #d97706;
+    /* Warning: Amber (Less neon) */
+    --color-warning: #d97706;
+    /* Amber 600 */
+    --color-warning-dark: #b45309;
+    /* Amber 700 */
     --color-warning-light: #fbbf24;
+    /* Amber 400 */
+    --color-warning-subtle: #fffbeb;
+    /* Amber 50 */
 
-    --color-danger: #ef4444;
-    --color-danger-dark: #dc2626;
-    --color-danger-light: #f87171;
+    /* Danger: Rose/Red (Softer) */
+    --color-danger: #e11d48;
+    /* Rose 600 */
+    --color-danger-dark: #be123c;
+    /* Rose 700 */
+    --color-danger-light: #fb7185;
+    /* Rose 400 */
+    --color-danger-subtle: #fff1f2;
+    /* Rose 50 */
 
     --color-info: #06b6d4;
 
-    /* Grays */
+    /* Grays - Slate Scale for modern feel */
     --color-gray-50: #f8fafc;
     --color-gray-100: #f1f5f9;
     --color-gray-200: #e2e8f0;
@@ -39,33 +69,46 @@
 
     /* Background & Text */
     --color-bg: #ffffff;
-    --color-bg-secondary: #f8fafc;
+    --color-bg-secondary: #f1f5f9;
+    /* Slightly darker than pure white for contrast */
+    --color-bg-tertiary: #e2e8f0;
+
     --color-text: #0f172a;
-    --color-text-secondary: #64748b;
+    /* Very dark slate */
+    --color-text-secondary: #475569;
+    /* Medium slate */
     --color-text-tertiary: #94a3b8;
+    /* Light slate */
 
     --color-border: #e2e8f0;
     --color-border-light: #f1f5f9;
+    --color-border-hover: #cbd5e1;
 
-    /* Shadows */
+    /* Shadows - Soft & Diffused */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
 
-    /* Spacing */
+    /* Spacing - Airy */
     --space-xs: 4px;
     --space-sm: 8px;
-    --space-md: 12px;
-    --space-lg: 20px;
-    --space-xl: 28px;
-    --space-2xl: 40px;
+    --space-md: 16px;
+    /* Increased from 12px */
+    --space-lg: 24px;
+    /* Increased from 20px */
+    --space-xl: 32px;
+    /* Increased from 28px */
+    --space-2xl: 48px;
+    /* Increased from 40px */
+    --space-3xl: 64px;
 
-    /* Border Radius */
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-xl: 16px;
+    /* Border Radius - Modern & Soft */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
     --radius-full: 9999px;
 
     /* Typography */
@@ -76,10 +119,13 @@
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
     /* Layout */
-    --header-height: 64px;
-    --sidebar-width: 240px;
+    --header-height: 72px;
+    /* Taller header */
+    --sidebar-width: 260px;
+    /* Wider sidebar */
 }
 
 /* ====================================
@@ -104,6 +150,7 @@ body {
     color: var(--color-text);
     background: var(--color-bg-secondary);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -134,13 +181,16 @@ select {
     left: 0;
     right: 0;
     height: var(--header-height);
-    background: var(--color-bg);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     padding: 0 var(--space-lg);
     gap: var(--space-lg);
     z-index: 100;
+    transition: all var(--transition-base);
 }
 
 .header-left {
@@ -148,12 +198,15 @@ select {
 }
 
 .logo {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--color-primary);
+    font-size: 1.25rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     cursor: pointer;
     transition: opacity var(--transition-fast);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
 }
 
 .logo:hover {
@@ -288,7 +341,7 @@ select {
     height: calc(100vh - var(--header-height));
     background: var(--color-bg);
     border-right: 1px solid var(--color-border);
-    padding: var(--space-lg) 0;
+    padding: var(--space-lg) var(--space-sm);
     overflow-y: auto;
 }
 
@@ -302,23 +355,25 @@ select {
 .nav-item {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    padding: 10px var(--space-md);
+    gap: var(--space-md);
+    padding: 12px var(--space-md);
     border-radius: var(--radius-md);
     color: var(--color-text-secondary);
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
     font-weight: 500;
     transition: all var(--transition-fast);
+    margin-bottom: 4px;
 }
 
 .nav-item:hover {
     background: var(--color-gray-100);
     color: var(--color-text);
+    transform: translateX(4px);
 }
 
 .nav-item.active {
-    background: var(--color-primary);
-    color: white;
+    background: var(--color-primary-subtle);
+    color: var(--color-primary-dark);
 }
 
 .nav-item svg {
@@ -478,6 +533,14 @@ h4 {
 
 .mb-lg {
     margin-bottom: var(--space-lg);
+}
+
+.ml-md {
+    margin-left: var(--space-md);
+}
+
+.ml-lg {
+    margin-left: var(--space-lg);
 }
 
 /* ====================================

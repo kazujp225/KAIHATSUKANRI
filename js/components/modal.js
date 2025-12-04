@@ -9,8 +9,8 @@ export function showModal(title, content, footer = null) {
     // Build modal content
     const modalHTML = `
         <div class="modal-header">
-            <h3 class="modal-title">${title}</h3>
-            <button class="modal-close" onclick="closeModal()">
+            <h3 class="modal-title font-bold gradient-text">${title}</h3>
+            <button class="modal-close hover-scale" onclick="closeModal()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>

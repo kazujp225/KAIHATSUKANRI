@@ -19,7 +19,7 @@ export default function renderMembers() {
             <!-- Page Header -->
             <div class="page-header">
                 <div class="page-header-left">
-                    <h1 class="page-title">👥 メンバー管理</h1>
+                    <h1 class="page-title"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: -4px; margin-right: 8px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>メンバー管理</h1>
                     <p class="page-subtitle">${users.length}名のメンバー</p>
                 </div>
                 <div class="page-header-right">
@@ -34,33 +34,33 @@ export default function renderMembers() {
 
             <!-- Stats Cards -->
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-bottom: var(--space-lg);">
-                <div style="padding: var(--space-md); background: linear-gradient(135deg, #8b5cf610 0%, #8b5cf605 100%); border: 2px solid #8b5cf620; border-radius: var(--radius-md); display: flex; align-items: center; gap: var(--space-md);">
-                    <div style="width: 40px; height: 40px; background: #8b5cf620; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
-                        👑
+                <div style="padding: var(--space-md); background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); display: flex; align-items: center; gap: var(--space-md);">
+                    <div style="width: 40px; height: 40px; background: var(--color-gray-100); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--color-text-secondary);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
                     </div>
                     <div>
-                        <div style="font-size: 1.5rem; font-weight: 700; color: #8b5cf6;">${adminCount}</div>
-                        <div style="font-size: 0.75rem; color: var(--color-text-secondary); font-weight: 600;">管理者</div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--color-text);">${adminCount}</div>
+                        <div style="font-size: 0.75rem; color: var(--color-text-tertiary);">管理者</div>
                     </div>
                 </div>
-                
-                <div style="padding: var(--space-md); background: linear-gradient(135deg, #2563eb10 0%, #2563eb05 100%); border: 2px solid #2563eb20; border-radius: var(--radius-md); display: flex; align-items: center; gap: var(--space-md);">
-                    <div style="width: 40px; height: 40px; background: #2563eb20; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
-                        💻
+
+                <div style="padding: var(--space-md); background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); display: flex; align-items: center; gap: var(--space-md);">
+                    <div style="width: 40px; height: 40px; background: var(--color-gray-100); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--color-text-secondary);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                     </div>
                     <div>
-                        <div style="font-size: 1.5rem; font-weight: 700; color: #2563eb;">${engineerCount}</div>
-                        <div style="font-size: 0.75rem; color: var(--color-text-secondary); font-weight: 600;">エンジニア</div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--color-text);">${engineerCount}</div>
+                        <div style="font-size: 0.75rem; color: var(--color-text-tertiary);">エンジニア</div>
                     </div>
                 </div>
-                
-                <div style="padding: var(--space-md); background: linear-gradient(135deg, #10b98110 0%, #10b98105 100%); border: 2px solid #10b98120; border-radius: var(--radius-md); display: flex; align-items: center; gap: var(--space-md);">
-                    <div style="width: 40px; height: 40px; background: #10b98120; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
-                        🤝
+
+                <div style="padding: var(--space-md); background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); display: flex; align-items: center; gap: var(--space-md);">
+                    <div style="width: 40px; height: 40px; background: var(--color-gray-100); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--color-text-secondary);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                     </div>
                     <div>
-                        <div style="font-size: 1.5rem; font-weight: 700; color: #10b981;">${contractorCount}</div>
-                        <div style="font-size: 0.75rem; color: var(--color-text-secondary); font-weight: 600;">外注</div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--color-text);">${contractorCount}</div>
+                        <div style="font-size: 0.75rem; color: var(--color-text-tertiary);">外注</div>
                     </div>
                 </div>
             </div>
@@ -75,12 +75,12 @@ export default function renderMembers() {
 
 function renderCompactMemberRow(user, projects) {
     const roleConfig = {
-        'Admin': { label: '👑 管理者', color: '#8b5cf6', bg: 'linear-gradient(135deg, #8b5cf615 0%, #8b5cf608 100%)', borderGlow: 'rgba(139, 92, 246, 0.4)' },
-        'Engineer': { label: '💻 エンジニア', color: '#2563eb', bg: 'linear-gradient(135deg, #2563eb15 0%, #2563eb08 100%)', borderGlow: 'rgba(37, 99, 235, 0.4)' },
-        'Contractor': { label: '🤝 外注', color: '#10b981', bg: 'linear-gradient(135deg, #10b98115 0%, #10b98108 100%)', borderGlow: 'rgba(16, 185, 129, 0.4)' }
+        'Admin': { label: '管理者', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>' },
+        'Engineer': { label: 'エンジニア', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>' },
+        'Contractor': { label: '外注', icon: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>' }
     };
 
-    const config = roleConfig[user.role] || { label: user.role, color: '#6b7280', bg: 'linear-gradient(135deg, #6b728015 0%, #6b728008 100%)', borderGlow: 'rgba(107, 114, 128, 0.4)' };
+    const config = roleConfig[user.role] || { label: user.role, icon: '' };
 
     // Count projects this user is assigned to
     const userProjects = projects.filter(p =>
@@ -92,61 +92,44 @@ function renderCompactMemberRow(user, projects) {
     ).length;
 
     return `
-        <div class="member-row-compact animate-fade-in" style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-lg); background: white; border: 2px solid var(--color-border); border-left: 5px solid ${config.color}; border-radius: var(--radius-lg); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;">
-            <!-- Gradient Background Overlay -->
-            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: ${config.bg}; opacity: 0.4; transition: opacity 0.3s; pointer-events: none;"></div>
-            
-            <!-- Content with z-index -->
-            <div style="position: relative; z-index: 1; display: flex; align-items: center; gap: var(--space-md); width: 100%;">
-                <!-- Avatar with Glow -->
-                <div style="flex-shrink: 0; position: relative;">
-                    <div style="position: absolute; inset: -4px; background: ${config.bg}; border-radius: var(--radius-full); filter: blur(8px); opacity: 0.6;"></div>
-                    <img src="${user.avatar}" alt="${user.name}" style="position: relative; width: 48px; height: 48px; border-radius: var(--radius-full); border: 3px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-                </div>
+        <div class="member-row-compact" style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: white; border: 1px solid var(--color-border); border-radius: var(--radius-md); transition: all 0.2s; cursor: pointer;">
+                <!-- Avatar -->
+                <img src="${user.avatar}" alt="${user.name}" style="width: 40px; height: 40px; border-radius: var(--radius-full); flex-shrink: 0;">
 
                 <!-- Name & Email -->
                 <div style="flex: 1; min-width: 0;">
-                    <div style="font-weight: 700; font-size: 1rem; margin-bottom: 4px; color: var(--color-text);">
+                    <div style="font-weight: 600; font-size: 0.9375rem; color: var(--color-text);">
                         ${user.name}
                     </div>
-                    <div style="font-size: 0.8125rem; color: var(--color-text-secondary); display: flex; align-items: center; gap: 6px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" opacity="0.7">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-width="2"/>
-                            <path d="M22 6l-10 7L2 6" stroke-width="2"/>
-                        </svg>
+                    <div style="font-size: 0.8125rem; color: var(--color-text-tertiary);">
                         ${user.email}
                     </div>
                 </div>
 
                 <!-- Role Badge -->
-                <div style="min-width: 130px;">
-                    <span style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: ${config.bg}; color: ${config.color}; border: 2px solid ${config.color}50; border-radius: var(--radius-full); font-size: 0.8125rem; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 8px ${config.color}20;">
-                        ${config.label}
-                    </span>
-                </div>
+                <span style="display: inline-flex; align-items: center; gap: 4px; padding: 4px 12px; background: var(--color-gray-100); color: var(--color-text-secondary); border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 500;">
+                    ${config.icon || ''}${config.label}
+                </span>
 
-                <!-- Project Stats with Cards -->
-                <div style="display: flex; align-items: center; gap: var(--space-md); min-width: 200px;">
-                    <div style="text-align: center; padding: var(--space-sm) var(--space-md); background: white; border: 2px solid var(--color-border); border-radius: var(--radius-md); box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                        <div style="font-size: 1.5rem; font-weight: 800; color: ${config.color}; line-height: 1;">${projectCount}</div>
-                        <div style="font-size: 0.625rem; color: var(--color-text-tertiary); font-weight: 600; text-transform: uppercase; margin-top: 2px; letter-spacing: 0.5px;">全PJ</div>
+                <!-- Project Stats -->
+                <div style="display: flex; align-items: center; gap: var(--space-md); min-width: 140px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.125rem; font-weight: 700; color: var(--color-text);">${projectCount}</div>
+                        <div style="font-size: 0.6875rem; color: var(--color-text-tertiary);">案件</div>
                     </div>
-                    <div style="text-align: center; padding: var(--space-sm) var(--space-md); background: white; border: 2px solid #10b98130; border-radius: var(--radius-md); box-shadow: 0 2px 4px rgba(16, 185, 129, 0.1);">
-                        <div style="font-size: 1.5rem; font-weight: 800; color: #10b981; line-height: 1;">${activeProjectCount}</div>
-                        <div style="font-size: 0.625rem; color: var(--color-text-tertiary); font-weight: 600; text-transform: uppercase; margin-top: 2px; letter-spacing: 0.5px;">進行中</div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.125rem; font-weight: 700; color: var(--color-text);">${activeProjectCount}</div>
+                        <div style="font-size: 0.6875rem; color: var(--color-text-tertiary);">進行中</div>
                     </div>
                 </div>
 
                 <!-- Actions -->
-                <div style="display: flex; gap: var(--space-xs);">
-                    <button class="btn btn-secondary btn-sm" onclick="event.stopPropagation(); editMember('${user.id}')" style="padding: 8px 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.08);">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M18.5 2.49998C18.8978 2.10216 19.4374 1.87866 20 1.87866C20.5626 1.87866 21.1022 2.10216 21.5 2.49998C21.8978 2.89781 22.1213 3.43737 22.1213 3.99998C22.1213 4.56259 21.8978 5.10216 21.5 5.49998L12 15L8 16L9 12L18.5 2.49998Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+                <button class="btn btn-secondary btn-sm" onclick="event.stopPropagation(); editMember('${user.id}')" style="padding: 6px 12px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                    </svg>
+                </button>
         </div>
         
         <style>

@@ -10,7 +10,7 @@ export const TEMPLATE_TYPES = [
         id: 'template-scraping',
         name: 'スクレイピングツール開発',
         description: 'Webスクレイピングツール開発用のチェックリスト',
-        icon: '🕷️',
+        icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>',
         color: '#8b5cf6',
         estimatedHours: 40,
         popularity: 85,
@@ -31,7 +31,7 @@ export const TEMPLATE_TYPES = [
         id: 'template-web-app',
         name: 'Webアプリケーション開発',
         description: 'フルスタックWebアプリケーション開発用',
-        icon: '🌐',
+        icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>',
         color: '#2563eb',
         estimatedHours: 120,
         popularity: 95,
@@ -52,7 +52,7 @@ export const TEMPLATE_TYPES = [
         id: 'template-mobile',
         name: 'モバイルアプリ開発',
         description: 'iOS/Androidアプリ開発用',
-        icon: '📱',
+        icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>',
         color: '#10b981',
         estimatedHours: 160,
         popularity: 78,
@@ -73,7 +73,7 @@ export const TEMPLATE_TYPES = [
         id: 'template-api',
         name: 'API開発',
         description: 'RESTful API / GraphQL API開発用',
-        icon: '🔌',
+        icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg>',
         color: '#f59e0b',
         estimatedHours: 60,
         popularity: 72,
@@ -100,7 +100,7 @@ export default function renderTemplates() {
             <!-- Page Header -->
             <div class="page-header">
                 <div class="page-header-left">
-                    <h1 class="page-title">📋 テンプレート管理</h1>
+                    <h1 class="page-title" style="display: flex; align-items: center; gap: var(--space-sm);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>テンプレート管理</h1>
                     <p class="page-subtitle">${TEMPLATE_TYPES.length}件のテンプレート</p>
                 </div>
                 <div class="page-header-right">
@@ -122,76 +122,49 @@ export default function renderTemplates() {
 }
 
 function renderCompactTemplateRow(template) {
-    const popularityStars = Math.round(template.popularity / 20); // 0-5 stars
-
     return `
-        <div class="template-row-compact animate-slide-in" style="display: flex; align-items: center; gap: var(--space-lg); padding: var(--space-lg); background: white; border: 2px solid var(--color-border); border-left: 6px solid ${template.color}; border-radius: var(--radius-lg); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden;">
-            <!-- Gradient Background -->
-            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, ${template.color}08 0%, transparent 60%); opacity: 0.5; transition: opacity 0.3s; pointer-events: none;"></div>
-            
-            <!-- Content Container -->
-            <div style="position: relative; z-index: 1; display: flex; align-items: center; gap: var(--space-lg); width: 100%;">
-                <!-- Icon with Glow Effect -->
-                <div style="flex-shrink: 0; position: relative;">
-                    <div style="position: absolute; inset: -6px; background: ${template.color}30; border-radius: var(--radius-lg); filter: blur(12px); opacity: 0.6;"></div>
-                    <div style="position: relative; width: 56px; height: 56px; background: linear-gradient(135deg, ${template.color}20 0%, ${template.color}10 100%); border: 2px solid ${template.color}40; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; box-shadow: 0 4px 12px ${template.color}25;">
-                        ${template.icon}
-                    </div>
+        <div class="template-row-compact" style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: white; border: 1px solid var(--color-border); border-radius: var(--radius-md); transition: all 0.2s; cursor: pointer;">
+                <!-- Icon -->
+                <div style="width: 44px; height: 44px; background: var(--color-gray-100); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--color-text-secondary); flex-shrink: 0;">
+                    ${template.icon}
                 </div>
 
                 <!-- Name & Description -->
                 <div style="flex: 1; min-width: 0;">
-                    <div style="font-weight: 700; font-size: 1.0625rem; margin-bottom: 4px; color: var(--color-text);">
+                    <div style="font-weight: 600; font-size: 0.9375rem; color: var(--color-text);">
                         ${template.name}
                     </div>
-                    <div style="font-size: 0.8125rem; color: var(--color-text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    <div style="font-size: 0.8125rem; color: var(--color-text-tertiary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                         ${template.description}
                     </div>
                 </div>
 
-                <!-- Popularity Stars in Card -->
-                <div style="display: flex; flex-direction: column; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-md); background: white; border: 2px solid var(--color-border); border-radius: var(--radius-md); min-width: 100px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
-                    <div style="display: flex; gap: 3px;">
-                        ${Array(5).fill(0).map((_, i) => `
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="${i < popularityStars ? template.color : '#e5e7eb'}" style="filter: drop-shadow(0 1px 2px ${i < popularityStars ? template.color + '40' : 'rgba(0,0,0,0.1)'});">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                            </svg>
-                        `).join('')}
+                <!-- Stats -->
+                <div style="display: flex; align-items: center; gap: var(--space-lg); min-width: 180px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.125rem; font-weight: 700; color: var(--color-text);">${template.tasks.length}</div>
+                        <div style="font-size: 0.6875rem; color: var(--color-text-tertiary);">タスク</div>
                     </div>
-                    <div style="font-size: 0.625rem; color: var(--color-text-tertiary); font-weight: 600; text-transform: uppercase;">評価</div>
-                </div>
-
-                <!-- Stats Cards -->
-                <div style="display: flex; align-items: center; gap: var(--space-md); min-width: 280px;">
-                    <div style="text-align: center; padding: var(--space-sm) var(--space-md); background: white; border: 2px solid ${template.color}30; border-radius: var(--radius-md); box-shadow: 0 2px 6px ${template.color}15; min-width: 70px;">
-                        <div style="font-size: 1.375rem; font-weight: 800; color: ${template.color}; line-height: 1;">${template.tasks.length}</div>
-                        <div style="font-size: 0.625rem; color: var(--color-text-tertiary); font-weight: 600; text-transform: uppercase; margin-top: 2px; letter-spacing: 0.5px;">タスク</div>
-                    </div>
-                    <div style="text-align: center; padding: var(--space-sm) var(--space-md); background: white; border: 2px solid ${template.color}30; border-radius: var(--radius-md); box-shadow: 0 2px 6px ${template.color}15; min-width: 70px;">
-                        <div style="font-size: 1.375rem; font-weight: 800; color: ${template.color}; line-height: 1;">${template.estimatedHours}h</div>
-                        <div style="font-size: 0.625rem; color: var(--color-text-tertiary); font-weight: 600; text-transform: uppercase; margin-top: 2px; letter-spacing: 0.5px;">時間</div>
-                    </div>
-                    <div style="text-align: center; padding: var(--space-sm) var(--space-md); background: linear-gradient(135deg, ${template.color}15 0%, ${template.color}08 100%); border: 2px solid ${template.color}40; border-radius: var(--radius-md); box-shadow: 0 2px 8px ${template.color}20; min-width: 70px;">
-                        <div style="font-size: 1.375rem; font-weight: 800; color: ${template.color}; line-height: 1;">${template.popularity}%</div>
-                        <div style="font-size: 0.625rem; color: ${template.color}; font-weight: 700; text-transform: uppercase; margin-top: 2px; letter-spacing: 0.5px;">人気</div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 1.125rem; font-weight: 700; color: var(--color-text);">${template.estimatedHours}h</div>
+                        <div style="font-size: 0.6875rem; color: var(--color-text-tertiary);">工数</div>
                     </div>
                 </div>
 
                 <!-- Actions -->
-                <div style="display: flex; gap: var(--space-sm);">
-                    <button class="btn btn-secondary btn-sm" onclick="event.stopPropagation(); viewTemplate('${template.id}')" style="padding: 8px 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.08);">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-width="2"/>
-                            <circle cx="12" cy="12" r="3" stroke-width="2"/>
+                <div style="display: flex; gap: var(--space-xs);">
+                    <button class="btn btn-secondary btn-sm" onclick="event.stopPropagation(); viewTemplate('${template.id}')" style="padding: 6px 12px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
                         </svg>
                     </button>
-                    <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); applyTemplateToProject('${template.id}')" style="padding: 8px 14px; background: linear-gradient(135deg, ${template.color} 0%, ${template.color}dd 100%); border: none; box-shadow: 0 4px 12px ${template.color}40;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M12 5v14M5 12h14" stroke-width="2" stroke-linecap="round"/>
+                    <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); applyTemplateToProject('${template.id}')" style="padding: 6px 12px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14" stroke-linecap="round"/>
                         </svg>
                     </button>
                 </div>
-            </div>
         </div>
         
         <style>

@@ -12,7 +12,7 @@ export default function renderSettings() {
             <!-- Page Header -->
             <div class="page-header">
                 <div class="page-header-left">
-                    <h1 class="page-title">⚙️ 設定</h1>
+                    <h1 class="page-title" style="display: flex; align-items: center; gap: var(--space-sm);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>設定</h1>
                     <p class="page-subtitle">システム設定とステータス管理</p>
                 </div>
             </div>
@@ -23,7 +23,7 @@ export default function renderSettings() {
                 ${renderSettingsCard(
         '案件ステータス設定',
         '案件のステータス定義を管理します',
-        '📋',
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>',
         '#2563eb',
         renderStatusList('project')
     )}
@@ -32,7 +32,7 @@ export default function renderSettings() {
                 ${renderSettingsCard(
         'タスクステータス設定',
         'タスクのステータス定義を管理します',
-        '✅',
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>',
         '#8b5cf6',
         renderStatusList('task')
     )}
@@ -41,7 +41,7 @@ export default function renderSettings() {
                 ${renderSettingsCard(
         'Issueステータス設定',
         'Issueのステータス定義を管理します',
-        '🐛',
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>',
         '#ef4444',
         renderStatusList('issue')
     )}
@@ -50,7 +50,7 @@ export default function renderSettings() {
                 ${renderSettingsCard(
         '優先度設定',
         '優先度ラベルを管理します',
-        '⚡',
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>',
         '#f59e0b',
         renderPriorityList()
     )}
@@ -59,7 +59,7 @@ export default function renderSettings() {
                 ${renderSettingsCard(
         '契約種別設定',
         '契約種別を管理します',
-        '📝',
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>',
         '#10b981',
         renderContractTypeList()
     )}
@@ -93,30 +93,30 @@ function renderStatusList(type) {
     const statusConfig = {
         'project': {
             items: [
-                { value: '見積中', color: '#6b7280', icon: '📊' },
-                { value: '開発中', color: '#2563eb', icon: '💻' },
-                { value: '検収中', color: '#f59e0b', icon: '🔍' },
-                { value: '運用中', color: '#8b5cf6', icon: '🚀' },
-                { value: '完了', color: '#10b981', icon: '✅' },
-                { value: '保留', color: '#eab308', icon: '⏸️' },
-                { value: '中止', color: '#ef4444', icon: '❌' }
+                { value: '見積中', color: '#6b7280', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>' },
+                { value: '開発中', color: '#2563eb', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>' },
+                { value: '検収中', color: '#f59e0b', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>' },
+                { value: '運用中', color: '#8b5cf6', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>' },
+                { value: '完了', color: '#10b981', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>' },
+                { value: '保留', color: '#eab308', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="10" y1="15" x2="10" y2="9"></line><line x1="14" y1="15" x2="14" y2="9"></line></svg>' },
+                { value: '中止', color: '#ef4444', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>' }
             ]
         },
         'task': {
             items: [
-                { value: '未着手', color: '#6b7280', icon: '⭕' },
-                { value: '作業中', color: '#2563eb', icon: '⚙️' },
-                { value: 'レビュー待ち', color: '#8b5cf6', icon: '👀' },
-                { value: 'ブロック中', color: '#f59e0b', icon: '🚧' },
-                { value: '完了', color: '#10b981', icon: '✅' }
+                { value: '未着手', color: '#6b7280', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle></svg>' },
+                { value: '作業中', color: '#2563eb', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>' },
+                { value: 'レビュー待ち', color: '#8b5cf6', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>' },
+                { value: 'ブロック中', color: '#f59e0b', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>' },
+                { value: '完了', color: '#10b981', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>' }
             ]
         },
         'issue': {
             items: [
-                { value: '未対応', color: '#6b7280', icon: '🆕' },
-                { value: '対応中', color: '#2563eb', icon: '🔧' },
-                { value: '確認待ち', color: '#f59e0b', icon: '⏳' },
-                { value: 'クローズ', color: '#10b981', icon: '✅' }
+                { value: '未対応', color: '#6b7280', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>' },
+                { value: '対応中', color: '#2563eb', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>' },
+                { value: '確認待ち', color: '#f59e0b', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>' },
+                { value: 'クローズ', color: '#10b981', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>' }
             ]
         }
     };
@@ -135,7 +135,7 @@ function renderStatusList(type) {
                         <!-- Icon with Glow -->
                         <div style="position: relative; flex-shrink: 0;">
                             <div style="position: absolute; inset: -4px; background: ${status.color}40; border-radius: var(--radius-lg); filter: blur(10px); opacity: 0.5;"></div>
-                            <div style="position: relative; font-size: 1.75rem; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, ${status.color}20 0%, ${status.color}10 100%); border-radius: var(--radius-lg); border: 2px solid ${status.color}30;">${status.icon}</div>
+                            <div style="position: relative; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, ${status.color}20 0%, ${status.color}10 100%); border-radius: var(--radius-lg); border: 2px solid ${status.color}30; color: ${status.color};">${status.icon}</div>
                         </div>
                         
                         <!-- Color Swatch with Shadow -->
@@ -201,9 +201,9 @@ function renderStatusList(type) {
 
 function renderPriorityList() {
     const priorities = [
-        { value: '高', color: '#ef4444', icon: '🔴', description: '緊急対応が必要' },
-        { value: '中', color: '#f59e0b', icon: '🟡', description: '通常の優先度' },
-        { value: '低', color: '#10b981', icon: '🟢', description: '余裕がある時に対応' }
+        { value: '高', color: '#ef4444', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>', description: '緊急対応が必要' },
+        { value: '中', color: '#f59e0b', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>', description: '通常の優先度' },
+        { value: '低', color: '#10b981', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>', description: '余裕がある時に対応' }
     ];
 
     return `
@@ -211,7 +211,7 @@ function renderPriorityList() {
             ${priorities.map(priority => `
                 <div class="status-item" style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: white; border: 2px solid var(--color-border); border-radius: var(--radius-lg); transition: all 0.2s;">
                     <div style="display: flex; align-items: center; gap: var(--space-sm); flex: 1;">
-                        <div style="font-size: 1.5rem;">${priority.icon}</div>
+                        <div style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: ${priority.color};">${priority.icon}</div>
                         <div style="width: 32px; height: 32px; background: ${priority.color}; border-radius: var(--radius-md); box-shadow: 0 2px 4px ${priority.color}40;"></div>
                         <div style="flex: 1;">
                             <div style="font-weight: 600; font-size: 0.9375rem;">${priority.value}</div>
@@ -244,9 +244,9 @@ function renderPriorityList() {
 
 function renderContractTypeList() {
     const contractTypes = [
-        { value: 'スポット', icon: '⚡', description: '単発案件', color: '#2563eb' },
-        { value: '月額', icon: '📅', description: '月額契約', color: '#8b5cf6' },
-        { value: '準委任', icon: '🤝', description: '準委任契約', color: '#10b981' }
+        { value: 'スポット', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>', description: '単発案件', color: '#2563eb' },
+        { value: '月額', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>', description: '月額契約', color: '#8b5cf6' },
+        { value: '準委任', icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>', description: '準委任契約', color: '#10b981' }
     ];
 
     return `
@@ -254,7 +254,7 @@ function renderContractTypeList() {
             ${contractTypes.map(type => `
                 <div class="status-item" style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: white; border: 2px solid var(--color-border); border-radius: var(--radius-lg); transition: all 0.2s;">
                     <div style="display: flex; align-items: center; gap: var(--space-sm); flex: 1;">
-                        <div style="font-size: 1.5rem;">${type.icon}</div>
+                        <div style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: ${type.color};">${type.icon}</div>
                         <div style="width: 32px; height: 32px; background: ${type.color}; border-radius: var(--radius-md); box-shadow: 0 2px 4px ${type.color}40;"></div>
                         <div style="flex: 1;">
                             <div style="font-weight: 600; font-size: 0.9375rem;">${type.value}</div>
