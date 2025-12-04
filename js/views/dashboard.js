@@ -52,136 +52,72 @@ export function renderDashboard() {
             </p>
         </div>
         
-        <!-- Enhanced Summary Cards -->
-        <!-- Enhanced Summary Cards -->
-        <div class="grid-cards mb-2xl">
-            <!-- Active Projects Card -->
-            <div class="card animate-scale-in hover-glow-primary" style="animation-delay: 0s; border-color: rgba(37, 99, 235, 0.2);">
-                <div class="card-bg-gradient" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, transparent 100%);"></div>
-                <div class="relative z-10">
-                    <div class="flex justify-between items-center mb-md">
-                        <div class="text-xs font-semibold text-tertiary uppercase tracking-wider">進行中</div>
-                        <div class="icon-box bg-primary-subtle text-xl">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="text-4xl font-bold text-primary leading-none mb-xs">${stats.active}</div>
-                    <div class="text-xs text-secondary">開発中・検収中の案件</div>
-                </div>
+        <!-- Summary Stats (Simple List) -->
+        <div class="stats-list mb-2xl">
+            <div class="stats-item">
+                <span class="stats-label">進行中</span>
+                <span class="stats-value text-primary">${stats.active}</span>
+                <span class="stats-desc">開発中・検収中の案件</span>
             </div>
-            
-            <!-- Estimate Projects Card -->
-            <div class="card animate-scale-in hover-glow-warning" style="animation-delay: 0.1s; border-color: rgba(245, 158, 11, 0.2);">
-                <div class="card-bg-gradient" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, transparent 100%);"></div>
-                <div class="relative z-10">
-                    <div class="flex justify-between items-center mb-md">
-                        <div class="text-xs font-semibold text-tertiary uppercase tracking-wider">見積中</div>
-                        <div class="icon-box bg-warning-subtle text-xl">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="text-4xl font-bold text-warning leading-none mb-xs">${stats.estimate}</div>
-                    <div class="text-xs text-secondary">提案フェーズの案件</div>
-                </div>
+            <div class="stats-divider"></div>
+            <div class="stats-item">
+                <span class="stats-label">見積中</span>
+                <span class="stats-value text-warning">${stats.estimate}</span>
+                <span class="stats-desc">提案フェーズの案件</span>
             </div>
-            
-            <!-- Completed Projects Card -->
-            <div class="card animate-scale-in hover-glow-success" style="animation-delay: 0.2s; border-color: rgba(16, 185, 129, 0.2);">
-                <div class="card-bg-gradient" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%);"></div>
-                <div class="relative z-10">
-                    <div class="flex justify-between items-center mb-md">
-                        <div class="text-xs font-semibold text-tertiary uppercase tracking-wider">完了</div>
-                        <div class="icon-box bg-success-subtle text-xl">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="text-4xl font-bold text-success leading-none mb-xs">${stats.completed}</div>
-                    <div class="text-xs text-secondary">納品済みの案件</div>
-                </div>
+            <div class="stats-divider"></div>
+            <div class="stats-item">
+                <span class="stats-label">完了</span>
+                <span class="stats-value text-success">${stats.completed}</span>
+                <span class="stats-desc">納品済みの案件</span>
             </div>
-            
             ${overdueProjects > 0 ? `
-                <!-- Overdue Projects Card with Alert -->
-                <div class="card animate-scale-in animate-pulse hover-glow-danger" style="animation-delay: 0.3s; border-color: rgba(239, 68, 68, 0.3);">
-                    <div class="card-bg-gradient" style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 50%);"></div>
-                    <div class="relative z-10">
-                        <div class="flex justify-between items-center mb-md">
-                            <div class="text-xs font-bold text-danger uppercase tracking-wider">
-                                <span style="display: inline-flex; vertical-align: middle; margin-right: 4px;">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                                        <line x1="12" y1="9" x2="12" y2="13"></line>
-                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                                    </svg>
-                                </span>
-                                期限超過
-                            </div>
-                            <div class="icon-box bg-danger-subtle text-xl">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="12" y1="8" x2="12" y2="12"></line>
-                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="text-4xl font-bold text-danger leading-none mb-xs">${overdueProjects}</div>
-                        <div class="text-xs text-danger font-semibold">要注意案件</div>
-                    </div>
-                </div>
+            <div class="stats-divider"></div>
+            <div class="stats-item stats-item-danger">
+                <span class="stats-label text-danger">期限超過</span>
+                <span class="stats-value text-danger">${overdueProjects}</span>
+                <span class="stats-desc text-danger">要注意案件</span>
+            </div>
             ` : ''}
         </div>
-        
+
         <style>
-            .grid-cards {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-                gap: var(--space-lg);
-            }
-            .card-bg-gradient {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                pointer-events: none;
-            }
-            .icon-box {
-                width: 40px;
-                height: 40px;
-                border-radius: var(--radius-md);
+            .stats-list {
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                gap: var(--space-xl);
+                padding: var(--space-lg) 0;
+                border-bottom: 1px solid var(--color-border);
             }
-            .bg-primary-subtle { background: rgba(37, 99, 235, 0.1); color: var(--color-primary); }
-            .bg-warning-subtle { background: rgba(245, 158, 11, 0.1); color: var(--color-warning); }
-            .bg-success-subtle { background: rgba(16, 185, 129, 0.1); color: var(--color-success); }
-            .bg-danger-subtle { background: rgba(239, 68, 68, 0.1); color: var(--color-danger); }
-            
-            .text-4xl { font-size: 2.5rem; }
-            .leading-none { line-height: 1; }
-            .tracking-wider { letter-spacing: 0.05em; }
-            .uppercase { text-transform: uppercase; }
-            .relative { position: relative; }
-            .z-10 { z-index: 10; }
-            .flex { display: flex; }
-            .justify-between { justify-content: space-between; }
-            .mb-xs { margin-bottom: var(--space-xs); }
-            .mb-sm { margin-bottom: var(--space-sm); }
-            .mb-md { margin-bottom: var(--space-md); }
+            .stats-item {
+                display: flex;
+                align-items: baseline;
+                gap: var(--space-md);
+            }
+            .stats-item-danger {
+                background: rgba(239, 68, 68, 0.05);
+                padding: var(--space-sm) var(--space-md);
+                border-radius: var(--radius-md);
+            }
+            .stats-label {
+                font-size: 1.125rem;
+                font-weight: 600;
+                color: var(--color-text);
+            }
+            .stats-value {
+                font-size: 2rem;
+                font-weight: 700;
+            }
+            .stats-desc {
+                font-size: 0.9375rem;
+                color: var(--color-text-secondary);
+            }
+            .stats-divider {
+                width: 1px;
+                height: 40px;
+                background: var(--color-border);
+            }
             .mb-2xl { margin-bottom: var(--space-2xl); }
-            .mt-sm { margin-top: var(--space-sm); }
         </style>
         
         <!-- Filter Bar -->
